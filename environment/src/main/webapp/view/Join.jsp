@@ -67,49 +67,50 @@
         <div class="u-container-style u-group u-opacity u-opacity-80 u-radius-30 u-shape-round u-white u-group-1">
           <div class="u-container-layout u-container-layout-1">
             <h1 class="u-text u-text-default u-text-palette-1-base u-text-1">Let's Start!</h1>
-         <%--    <div class="center">
-		<h1><img id="logo" src="../images/login_logo.png"></h1>
-		<form action="join.do" method="post">
-			<div class="text-area">
-				<label>이름</label>
-				<input type="text" name="name" value="${param.name}">
-			</div>
-			<div class="text-area">
-				<label>아이디</label>
-				<input type="text" name="id" value="${param.id}">
-			</div>
-			<div class="text-area">
-				<label>비밀번호</label>
-				<input type="password" name="password">
-			</div>
-			<div class="text-area">
-				<label>비밀번호 확인</label>
-				<input type="password" name="confirmPassword">
-			</div>
-			<div class="text-area">
-				<label>이메일</label>
-				<input type="text" name="email" value="${param.email}">
-			</div>
-			<div class="button-area">
-				<button type="button" onclick="location.href = '../index.html'">취소</button>
-				<button type="submit">확인</button>
-			</div>
-			<c:if test="${errors.duplicateId or errors.password or errors.confirmPassword or errors.email}">
-				<script type="text/javascript">
-					alert('모든 입력칸을 체워주세요.');
-				</script>
-			</c:if>
-			<c:if test="${errors.notMatch}">
-				<script type="text/javascript">
-					alert('암호와 확인이 일치하지 않습니다.');
-				</script>
-			</c:if>
-		</form>
-	</div> --%>
+            
+            <%-- <div class="u-form u-form-1">
+				<form action="join.do" method="post">
+					<div class="text-area">
+						<label>이름</label>
+						<input type="text" name="name" value="${param.name}">
+					</div>
+					<div class="text-area">
+						<label>아이디</label>
+						<input type="text" name="id" value="${param.id}">
+					</div>
+					<div class="text-area">
+						<label>비밀번호</label>
+						<input type="password" name="password">
+					</div>
+					<div class="text-area">
+						<label>비밀번호 확인</label>
+						<input type="password" name="confirmPassword">
+					</div>
+					<div class="text-area">
+						<label>이메일</label>
+						<input type="text" name="email" value="${param.email}">
+					</div>
+					<div class="button-area">
+						<button type="button" onclick="location.href = '../index.html'">취소</button>
+						<button type="submit">확인</button>
+					</div>
+					<c:if test="${errors.duplicateId or errors.password or errors.confirmPassword or errors.email}">
+						<script type="text/javascript">
+							alert('모든 입력칸을 체워주세요.');
+						</script>
+					</c:if>
+					<c:if test="${errors.notMatch}">
+						<script type="text/javascript">
+							alert('암호와 확인이 일치하지 않습니다.');
+						</script>
+					</c:if>
+				</form>
+			</div> --%>
             <div class="u-form u-form-1">
-              <form action="join.do" method="post" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px;">
-                <!-- <input type="hidden" id="siteId" name="siteId" value="618681">
-                <input type="hidden" id="pageId" name="pageId" value="619405"> -->
+            <!-- class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" -->
+              <form action="join.do" method="post">
+                <input type="hidden" id="siteId" name="siteId" value="618681">
+                <input type="hidden" id="pageId" name="pageId" value="619405">
                 <div class="u-form-group u-form-name">
                 
                 <div class="u-form-group u-form-group-2">
@@ -133,21 +134,26 @@
                   <input type="email" placeholder="Enter a valid email address" value="${param.email}" id="email-ebf3" name="email" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
                 </div>
                 
-                <!-- <span class="u-align-center u-form-group u-form-submit"> -->
-                <div>
+                <span class="u-align-center u-form-group u-form-submit" style="margin-left: 80px">
+                <!-- <div>
 	                <button type="button" onclick="location.href = '../index.html'">취소</button>
 					<input type="submit">확인</button>
-                </div>
-                  <!-- <a href="/login.jsp" class="u-btn u-btn-round u-btn-submit u-button-style u-hover-palette-1-dark-1 u-palette-1-base u-radius-20 u-btn-1">Enter<br>
+                </div> -->
+                  <a href="#" class="u-btn u-btn-round u-btn-submit u-button-style u-hover-palette-1-dark-1 u-palette-1-base u-radius-20 u-btn-1">Enter<br>
                   </a>
                   <input type="submit" value="submit" class="u-form-control-hidden">
                   <a href="#" class="u-btn u-btn-round u-btn-submit u-button-style u-hover-palette-1-dark-1 u-palette-1-base u-radius-20 u-btn-1">cancel<br>
                   </a>
-                  <input type="submit" value="submit" class="u-form-control-hidden"> -->
-                <!-- </span> -->
-                <c:if test="${errors.duplicateId or errors.password or errors.confirmPassword or errors.email}">
+                  <input type="submit" value="submit" class="u-form-control-hidden">
+                </span>
+                <c:if test="${errors.password or errors.confirmPassword or errors.email}">
 				<script type="text/javascript">
-					alert('모든 입력칸을 체워주세요.');
+					alert('모든 입력칸을 채워주세요.');
+				</script>
+				</c:if>
+				<c:if test="${errors.duplicateId}">
+				<script type="text/javascript">
+					alert('아이디 중복이 발생하였습니다.');
 				</script>
 				</c:if>
 				<c:if test="${errors.notMatch}">

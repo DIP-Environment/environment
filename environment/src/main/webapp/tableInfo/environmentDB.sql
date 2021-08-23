@@ -1,9 +1,9 @@
 
 /* 
- * 뉴스기사 테이블
- * 번호, 
- * 제목, 
- * 글 
+ * �돱�뒪湲곗궗 �뀒�씠釉�
+ * 踰덊샇, 
+ * �젣紐�, 
+ * 湲� 
  */
 create table news_article(
 	article_no int,				
@@ -19,11 +19,11 @@ increment by 1 start with 1;
 
 /*login
  * 
- * 아이디
- * 이름
- * 비밀번호
- * 이메일
- * 회원가입 날짜 및 시간
+ * �븘�씠�뵒
+ * �씠由�
+ * 鍮꾨�踰덊샇
+ * �씠硫붿씪
+ * �쉶�썝媛��엯 �궇吏� 諛� �떆媛�
  * */
 create table member(
 memberid varchar(30) primary key,
@@ -31,11 +31,11 @@ name varchar(50) not null,
 password varchar(255) not null,
 email varchar(50),
 regdate datetime not null,
-moddate datetime,
+moddate_pwd datetime,
 error_pwd int
 );
 
-select * from login;
+select * from member;
 
 /*article*/
 create table article(
@@ -59,7 +59,7 @@ select * from article_content;
 
 select last_insert_id() from article;
 
-//limit 시작번호(0부터), size
+//limit �떆�옉踰덊샇(0遺��꽣), size
 select * from article order by article_no desc limit 0,2;
 
 select * from article_content where article_no = 7;

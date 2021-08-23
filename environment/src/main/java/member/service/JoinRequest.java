@@ -55,6 +55,7 @@ public class JoinRequest {
 	
 	public void validate(Map<String, Boolean> errors) {
 		checkEmpty(errors, id, "id");
+		checkEmpty(errors, name, "name");
 		checkEmpty(errors, password, "password");
 		checkEmpty(errors, confirmPassword, "confirmPassword");
 		checkEmpty(errors, email, "email");

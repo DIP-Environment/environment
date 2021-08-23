@@ -67,7 +67,7 @@
           <div class="u-container-layout u-container-layout-1">
             <h1 class="u-text u-text-default u-text-palette-1-base u-text-1">Sign in!</h1>
             <div class="u-form u-form-1">
-              <form action="login.do" method="POST" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" source="email" name="form" style="padding: 10px;">
+              <form action="login.do" method="post">
                 <c:if test="${errors.idOrPwNotMatch}">
 					<script type="text/javascript">
 							alert('아이디와 암호가 일치하지 않습니다.');
@@ -86,7 +86,7 @@
                 </div>
                 <div class="u-form-group u-form-group-2">
                   <label for="text-485b" class="u-label">Password</label>
-                  <input type="password" id="text-485b" name="password" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" placeholder="Enter your Password">
+                  <input type="password" id="text-485b" name="password" value="${param.password}" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" placeholder="Enter your Password">
                   <c:if test="${errors.password}">
 					<script type="text/javascript">
 						alert('암호를 입력하세요.');
@@ -94,8 +94,8 @@
 				  </c:if>
                 </div>
                 <div class="u-align-center u-form-group u-form-submit">
-                  <!-- <a href="#" class="u-btn u-btn-round u-btn-submit u-button-style u-hover-palette-1-dark-1 u-palette-1-base u-radius-20 u-btn-1">Enter<br>
-                  </a> -->
+                  <a href="#" class="u-btn u-btn-round u-btn-submit u-button-style u-hover-palette-1-dark-1 u-palette-1-base u-radius-20 u-btn-1">Enter<br>
+                  </a>
                   <input type="submit" value="submit" class="u-form-control-hidden">
                 </div>
                 <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent. </div>
@@ -103,7 +103,7 @@
                 <input type="hidden" value="" name="recaptchaResponse">
               </form>
             </div>
-            <a href="Join.jsp" class="u-border-1 u-border-active-palette-2-base u-border-hover-palette-1-base u-btn u-button-style u-none u-text-palette-1-base u-btn-2">SignUp<span style="font-size: 1rem;">
+            <a href="join.do" class="u-border-1 u-border-active-palette-2-base u-border-hover-palette-1-base u-btn u-button-style u-none u-text-palette-1-base u-btn-2">SignUp<span style="font-size: 1rem;">
                 <span style="font-size: 1.5rem;"></span>
               </span>
             </a>

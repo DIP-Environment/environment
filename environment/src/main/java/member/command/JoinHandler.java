@@ -36,7 +36,6 @@ public class JoinHandler implements CommandHandler {
 	}
 
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) throws SQLException {
-		System.out.println("JoinHandlerµé¾î¿È.");
 		JoinRequest joinReq = new JoinRequest();
 		joinReq.setId(req.getParameter("id"));
 		joinReq.setName(req.getParameter("name"));
@@ -50,13 +49,11 @@ public class JoinHandler implements CommandHandler {
 		joinReq.validate(errors);
 		
 		if(!errors.isEmpty()) {
-			System.out.println("errorsµé¾î¿È.");
 			return FORM_VIEW;
 		}
 		
 		try {
 			joinService.join(joinReq);
-			System.out.println("login gogo");
 			return LOGIN_VIEW;
 		} catch (DuplicateIdException e) {
 			errors.put("duplicateId", Boolean.TRUE);

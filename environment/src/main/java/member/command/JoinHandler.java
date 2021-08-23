@@ -14,7 +14,8 @@ import member.service.JoinService;
 
 
 public class JoinHandler implements CommandHandler {
-	private static final String FORM_VIEW = "/view/signUp.jsp";
+	private static final String FORM_VIEW = "/view/Join.jsp";
+	private static final String LOGIN_VIEW = "/view/login.jsp";
 	private JoinService joinService = new JoinService();
 	
 	@Override
@@ -29,11 +30,13 @@ public class JoinHandler implements CommandHandler {
 		}
 	}
 
-	private String processForm(HttpServletRequest req, HttpServletResponse res) {
+	private String processForm(HttpServletRequest req, HttpServletResponse res) { 
+		System.out.println("join get...?");
 		return FORM_VIEW;
 	}
 
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) throws SQLException {
+		System.out.println("JoinHandler들어옴.");
 		JoinRequest joinReq = new JoinRequest();
 		joinReq.setId(req.getParameter("id"));
 		joinReq.setName(req.getParameter("name"));
@@ -47,15 +50,21 @@ public class JoinHandler implements CommandHandler {
 		joinReq.validate(errors);
 		
 		if(!errors.isEmpty()) {
+			System.out.println("errors들어옴.");
 			return FORM_VIEW;
 		}
 		
 		try {
 			joinService.join(joinReq);
-			return "/view/login.jsp";
+			System.out.println("login gogo");
+			return LOGIN_VIEW;
 		} catch (DuplicateIdException e) {
 			errors.put("duplicateId", Boolean.TRUE);
+			System.out.println("중복 발생..");
 			return FORM_VIEW;
+		}catch (Exception e) {
+			System.out.println("갑작스러운 에러 발생" + e);
 		}
+		return null;
 	}
 }

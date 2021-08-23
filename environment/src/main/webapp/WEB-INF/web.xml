@@ -3,7 +3,7 @@
    <listener>      
   	<listener-class>jdbc.DBCPInitListener</listener-class>
   </listener>
-   <context-param>
+   <context-param> 
  	<param-name>poolConfig</param-name>
  	<param-value>
  		jdbcdriver=org.mariadb.jdbc.Driver

@@ -8,10 +8,8 @@ import java.io.StringReader;
 import java.sql.DriverManager;
 import java.util.Properties;
 
-import javax.management.RuntimeErrorException;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
-import javax.servlet.annotation.WebListener;
 
 import org.apache.commons.dbcp2.ConnectionFactory;
 import org.apache.commons.dbcp2.DriverManagerConnectionFactory;

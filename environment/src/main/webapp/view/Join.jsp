@@ -11,10 +11,10 @@
     <meta name="description" content="">
     <meta name="page_type" content="np-template-header-footer-from-plugin">
     <title>Join</title>
-    <link rel="stylesheet" href="css/nicepage.css" media="screen">
-	<link rel="stylesheet" href="css/Join.css" media="screen">
-    <script class="u-script" type="text/javascript" src="js/jquery-1.9.1.min.js" defer=""></script>
-    <script class="u-script" type="text/javascript" src="js/nicepage.js" defer=""></script>
+    <link rel="stylesheet" href="../css/nicepage.css" media="screen">
+	<link rel="stylesheet" href="../css/Join.css" media="screen">
+    <script class="u-script" type="text/javascript" src="../js/jquery-1.9.1.min.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="../js/nicepage.js" defer=""></script>
     <meta name="generator" content="Nicepage 3.23.8, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
     
@@ -31,7 +31,7 @@
   </head>
   <body class="u-body"><header class="u-clearfix u-header u-sticky u-sticky-ade3 u-white u-header" id="sec-38c0"><div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
         <a href="https://nicepage.com" class="u-image u-image-default u-logo u-image-1" data-image-width="200" data-image-height="94">
-          <img src="images/2743b7d2-73a2-42ac-e1ba-e365b897d6ea.png" class="u-logo-image u-logo-image-1">
+          <img src="../images/2743b7d2-73a2-42ac-e1ba-e365b897d6ea.png" class="u-logo-image u-logo-image-1">
         </a>
         <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1" data-responsive-from="MD">
           <div class="menu-collapse" style="font-size: 1.5rem; letter-spacing: 0px; text-transform: uppercase; font-weight: 700;">
@@ -107,7 +107,7 @@
 		</form>
 	</div> --%>
             <div class="u-form u-form-1">
-              <form action="join.do" method="post" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px;">
+              <form action="join.do" method="post" onsubmit="return Validation();" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px;">
                 <!-- <input type="hidden" id="siteId" name="siteId" value="618681">
                 <input type="hidden" id="pageId" name="pageId" value="619405"> -->
                 <div class="u-form-group u-form-name">
@@ -117,7 +117,7 @@
                   <input type="text" placeholder="Enter your ID" value="${param.id}" id="text-0ad8" name="id" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
                 </div>
                   <label for="name-ebf3" class="u-label">Name</label>
-                  <input type="text" placeholder="Enter your Name" value="${param.name}" id="name-ebf3" name="name" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
+                  <input type="text" placeholder="Enter your Name" value="${param.name}" id="name-ebf3" name="name" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" >
                 </div>
                 
                 <div class="u-form-group u-form-group-3">
@@ -130,7 +130,7 @@
                 </div>
                 <div class="u-form-email u-form-group">
                   <label for="email-ebf3" class="u-label">Email</label>
-                  <input type="email" placeholder="Enter a valid email address" value="${param.email}" id="email-ebf3" name="email" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
+                  <input type="email" placeholder="Enter a valid email address" id="email-ebf3" name="email" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
                 </div>
                 
                 <!-- <span class="u-align-center u-form-group u-form-submit"> -->
@@ -145,16 +145,7 @@
                   </a>
                   <input type="submit" value="submit" class="u-form-control-hidden"> -->
                 <!-- </span> -->
-                <c:if test="${errors.duplicateId or errors.password or errors.confirmPassword or errors.email}">
-				<script type="text/javascript">
-					alert('모든 입력칸을 체워주세요.');
-				</script>
-				</c:if>
-				<c:if test="${errors.notMatch}">
-					<script type="text/javascript">
-						alert('암호와 확인이 일치하지 않습니다.');
-					</script>
-				</c:if>
+                
 				
 				<!-- <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent. </div>
                 <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors then try again. </div>

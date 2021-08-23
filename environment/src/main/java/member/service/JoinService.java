@@ -6,11 +6,11 @@ import java.util.Date;
 
 import jdbc.JdbcUtil;
 import jdbc.connection.ConnectionProvider;
-import member.dao.MembersDao;
-import member.model.Members;
+import member.dao.MemberDao;
+import member.model.Member;
 
 public class JoinService {
-	private MembersDao memberDao = new MembersDao();
+	private MemberDao memberDao = new MemberDao();
 	
 	public void join(JoinRequest joinReq) throws SQLException {
 		Connection conn =  null;
@@ -18,21 +18,19 @@ public class JoinService {
 			conn = ConnectionProvider.getConnection();
 			conn.setAutoCommit(false);
 			
-			Members member = memberDao.selectById(conn, joinReq.getId());
+			Member member = memberDao.selectById(conn, joinReq.getId());
 			if(member != null) {
 				JdbcUtil.rollback(conn);
 				throw new DuplicateIdException();
 			}
 			
 			memberDao.insert(conn, 
-					new Members(
+					new Member(
 							joinReq.getId(),
 							joinReq.getName(),
 							joinReq.getPassword(), 
-							joinReq.getEmail(), 
-							new Date(),
-							new Date(),
-							0)
+							joinReq.getEmail(),
+							new Date())
 					);
 			conn.commit();
 		} catch (SQLException e) {

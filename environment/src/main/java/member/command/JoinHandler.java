@@ -15,7 +15,6 @@ import member.service.JoinService;
 
 public class JoinHandler implements CommandHandler {
 	private static final String FORM_VIEW = "/view/Join.jsp";
-	private static final String LOGIN_VIEW = "/view/login.jsp";
 	private JoinService joinService = new JoinService();
 	
 	@Override
@@ -36,7 +35,7 @@ public class JoinHandler implements CommandHandler {
 	}
 
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) throws SQLException {
-		System.out.println("JoinHandlerµé¾î¿È.");
+		System.out.println("JoinHandlerï¿½ï¿½ï¿½ï¿½.");
 		JoinRequest joinReq = new JoinRequest();
 		joinReq.setId(req.getParameter("id"));
 		joinReq.setName(req.getParameter("name"));
@@ -50,21 +49,18 @@ public class JoinHandler implements CommandHandler {
 		joinReq.validate(errors);
 		
 		if(!errors.isEmpty()) {
-			System.out.println("errorsµé¾î¿È.");
+			System.out.println("errorsï¿½ï¿½ï¿½ï¿½.");
 			return FORM_VIEW;
 		}
 		
 		try {
 			joinService.join(joinReq);
 			System.out.println("login gogo");
-			return LOGIN_VIEW;
+			return "/view/ifMain.jsp";
 		} catch (DuplicateIdException e) {
 			errors.put("duplicateId", Boolean.TRUE);
-			System.out.println("Áßº¹ ¹ß»ý..");
+			System.out.println("ï¿½ßºï¿½ ï¿½ß»ï¿½..");
 			return FORM_VIEW;
-		}catch (Exception e) {
-			System.out.println("°©ÀÛ½º·¯¿î ¿¡·¯ ¹ß»ý" + e);
 		}
-		return null;
 	}
 }
